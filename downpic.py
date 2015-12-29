@@ -36,6 +36,7 @@ def downall():
                 num=0
                 for urlindex in range(len(picurl)):
                     url=picurl[urlindex]
+                    print(url)
                     finame=url.split('/')[-1]
                     filepath='J:\\caoliu\\{0}'.format(sinlink.split('/')[-1])
                     #print(filepath)
@@ -46,15 +47,19 @@ def downall():
                     name=filepath+'\\'+finame
                     f = open(name,'wb')
                     data= my_spider.send_get(url)
+                    print('get data')
                     if not data.strip():
                         print('NULL'+'剩余'+str(len(picurl)-urlindex))
+                        print('结束空')
                     else:
+                        print('开始-----')
                         f.write(data)
                         f.close()
                         print('下载了'+str(num)+'剩余'+str(len(picurl)-urlindex))
 
                     num+=1
                     time.sleep(5)
+                    print('结束这一轮')
 
 
 if __name__=='__main__':

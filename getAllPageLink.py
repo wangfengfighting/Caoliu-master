@@ -19,7 +19,7 @@ def getPagelink(source):
         for i in images:
             link=i.split('"')[-1]
             allLink.append('http://www.cl529.com/'+link)
-        filteralllink=allLink[12:]
+        filteralllink=allLink[14:]
         return filteralllink
 if __name__=='__main__':
     my_spider = whyspider.WhySpider()

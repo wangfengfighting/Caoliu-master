@@ -38,3 +38,9 @@ result = "fff ffff"
 if not result.strip():
     print('null')
 print(result)
+
+for i in range(20):
+    if i<22:
+        print(i)
+    elif i==14:
+        break
