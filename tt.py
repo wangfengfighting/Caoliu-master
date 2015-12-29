@@ -12,16 +12,16 @@ __author__ = 'Administrator'
 # print('Pic Saved!')
 import whyspider
 # 初始化爬虫对象
-my_spider = whyspider.WhySpider()
-# 模拟GET操作
-path="G:\PostgraduatePROJECT\Caoliu-master"
-fname='22.jpeg'
-path2 = path+'\\'+fname
-name='G:\\PostgraduatePROJECT\\Caoliu-master\\down\\22.jpeg'
-f = open(name,'wb')
-data= my_spider.send_get('http://img.picuphost.com/img/upload/image/20151130/113000016301.jpeg')
-f.write(data)
-f.close()
+# my_spider = whyspider.WhySpider()
+# # 模拟GET操作
+# path="G:\PostgraduatePROJECT\Caoliu-master"
+# fname='22.jpeg'
+# path2 = path+'\\'+fname
+# name='G:\\PostgraduatePROJECT\\Caoliu-master\\down\\22.jpeg'
+# f = open(name,'wb')
+# data= my_spider.send_get('http://img.picuphost.com/img/upload/image/20151130/113000016301.jpeg')
+# f.write(data)
+# f.close()
 
 # # 模拟POST操作
 # print my_spider.send_post('http://3.apitool.sinaapp.com/','why=PostString2333')
@@ -34,3 +34,7 @@ f.close()
 #
 # # 模拟GET操作
 # print my_spider.send_get('http://www.baidu.com/')
+result = "fff ffff"
+if not result.strip():
+    print('null')
+print(result)

@@ -26,7 +26,6 @@ if __name__=='__main__':
     allLink=getPagelink(getHtml(3))
     for i in allLink:
         print type(i),i
-
         source=getHtml(i)
         picurl=getImage(source)
         print(picurl)

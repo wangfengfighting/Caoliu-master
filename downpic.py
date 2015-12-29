@@ -4,6 +4,7 @@ from DecodeHTML import *
 import whyspider
 import getAllPageLink
 import os
+import time
 def begindown():
     my_spider = whyspider.WhySpider()
     source=getHtml('http://www.cl529.com/htm_data/16/1512/1775897.html')
@@ -28,13 +29,16 @@ def downall():
             source=getHtml(sinlink)
             #print(source)
             picurl=getImage(source)
-            print(picurl,'-------')
+            #print(picurl,'-------')
             if len(picurl)>0:
-                print((picurl))
-                for url in picurl:
+                print('开始下载......')
+                #print((picurl))
+                num=0
+                for urlindex in range(len(picurl)):
+                    url=picurl[urlindex]
                     finame=url.split('/')[-1]
-                    filepath='D:\\caoliu\\{0}'.format(sinlink.split('/')[-1])
-                    print(filepath)
+                    filepath='J:\\caoliu\\{0}'.format(sinlink.split('/')[-1])
+                    #print(filepath)
                     if os.path.isdir(filepath):
                         pass
                     else:
@@ -42,8 +46,15 @@ def downall():
                     name=filepath+'\\'+finame
                     f = open(name,'wb')
                     data= my_spider.send_get(url)
-                    f.write(data)
-                    f.close()
+                    if not data.strip():
+                        print('NULL'+'剩余'+str(len(picurl)-urlindex))
+                    else:
+                        f.write(data)
+                        f.close()
+                        print('下载了'+str(num)+'剩余'+str(len(picurl)-urlindex))
+
+                    num+=1
+                    time.sleep(5)
 
 
 if __name__=='__main__':
