@@ -12,7 +12,7 @@ __author__ = 'Administrator'
 # print('Pic Saved!')
 import whyspider
 # 初始化爬虫对象
-# my_spider = whyspider.WhySpider()
+my_spider = whyspider.WhySpider()
 # # 模拟GET操作
 # path="G:\PostgraduatePROJECT\Caoliu-master"
 # fname='22.jpeg'
@@ -30,17 +30,24 @@ import whyspider
 # print my_spider.send_get('http://www.baidu.com/')
 #
 # # 切换到手机模式
-# my_spider.set_mobile()
+#my_spider.set_mobile()
 #
 # # 模拟GET操作
 # print my_spider.send_get('http://www.baidu.com/')
-result = "fff ffff"
-if not result.strip():
-    print('null')
-print(result)
+# import time
+# time1= time.time()
+#
+# time2= time1+3
+# print(time2-time1)
 
-for i in range(20):
-    if i<22:
-        print(i)
-    elif i==14:
-        break
+import urllib2
+
+import whyspider
+request = urllib2.Request('http://ipoock.com/img/g4/201512242250036siyu.jpeg')
+request.add_header('User-Agent', 'fake-client')
+#response = urllib2.urlopen(request,timeout=10)
+response = urllib2.urlopen('http://ipoock.com/img/g4/201512242250036siyu.jpeg', timeout=10)
+print(response)
+f=open('J:\\caoliu\\ff.jpeg','wb')
+f.write(response)
+f.close()

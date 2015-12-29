@@ -16,6 +16,7 @@ import urllib2
 import cookielib
 import re
 import string
+import time
 
 class WhySpider:
     
@@ -28,11 +29,15 @@ class WhySpider:
     # 发送GET请求
     def send_get(self,get_url):
         result = ""
+        #time1= time.time()
+        #while time.time()-time1>10:
         try:
             my_request = urllib2.Request(url = get_url, headers = self.headers)
             result = self.opener.open(my_request).read()
         except Exception,e:
             print "Exception : ",e
+
+        #response = urllib2.urlopen('http://ipoock.com/img/g4/201512242250036siyu.jpeg', timeout=100)
         return result
 
     # 发送POST请求
