@@ -21,24 +21,25 @@ def begindown():
 
 def downall():
     my_spider = whyspider.WhySpider()
-    for page in range(2,130):
+    for page in range(1,130):
         allLink=getAllPageLink.getPagelink(getAllPageLink.getHtml(page))
-        for sinlink in allLink:
+        for sinlink in allLink:#sinlink 每个连接下的网页
             #print('begin down ',sinlink)
             source=getHtml(sinlink)
-            print(source)
+            #print(source)
             picurl=getImage(source)
-            print(picurl)
-            if len(picurl)<0:
+            print(picurl,'-------')
+            if len(picurl)>0:
                 print((picurl))
                 for url in picurl:
                     finame=url.split('/')[-1]
-                    filepath='J:\\caoliu\\{0}'.format(sinlink.split('/')[-1])
+                    filepath='D:\\caoliu\\{0}'.format(sinlink.split('/')[-1])
+                    print(filepath)
                     if os.path.isdir(filepath):
                         pass
                     else:
                         os.mkdir(filepath)
-                    name=filepath+finame
+                    name=filepath+'\\'+finame
                     f = open(name,'wb')
                     data= my_spider.send_get(url)
                     f.write(data)
