@@ -1,31 +1,36 @@
-# coding: utf-8
-import urllib
-import urllib2
-from bs4 import BeautifulSoup
-import re
-import os
+# -*- coding:utf-8 -*-
+__author__ = 'Administrator'
+# import urllib.request
+# path = "D:\\Download"
+# url = "http://img.picuphost.com/img/upload/image/20151130/113000016301.jpeg"
+# name ="D:\\download\\2.jpeg"
+# #保存文件时候注意类型要匹配，如要保存的图片为jpg，则打开的文件的名称必须是jpg格式，否则会产生无效图片
+# conn = urllib.request.urlopen(url)
+# f = open(name,'wb')
+# f.write(conn.read())
+# f.close()
+# print('Pic Saved!')
+import whyspider
+# 初始化爬虫对象
+my_spider = whyspider.WhySpider()
+# 模拟GET操作
+path="G:\PostgraduatePROJECT\Caoliu-master"
+fname='22.jpeg'
+path2 = path+'\\'+fname
+name='G:\\PostgraduatePROJECT\\Caoliu-master\\down\\22.jpeg'
+f = open(name,'wb')
+data= my_spider.send_get('http://img.picuphost.com/img/upload/image/20151130/113000016301.jpeg')
+f.write(data)
+f.close()
 
-def DownloadFiles(url, targetPath):
-    # Create directories if not exist
-    if not os.path.exists(targetPath):
-        os.makedirs(targetPath)
-    # Get links
-    headers = {"User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6"}
-    req = urllib2.Request(url, headers=headers)
-    content = urllib2.urlopen(req)
-    content = content.read()
-    soup = BeautifulSoup(content)
-    fileList = soup.find_all('a', href=re.compile('.*.jpeg'))
-    # Download
-    for fileLink in fileList:
-        try:
-            print("Downloading " + fileLink.string + "...")
-            urllib.urlretrieve(url+fileLink.attrs['href'], targetPath + fileLink.string)
-        except Exception, e:
-            print e
-    print("Task done!")
-
-if __name__ == '__main__':
-    url = 'http://www.cl529.com/htm_data/16/1512/1775897.html/'
-    targetPath = "D:\\PythonDownloads\\"
-    DownloadFiles(url, targetPath)
+# # 模拟POST操作
+# print my_spider.send_post('http://3.apitool.sinaapp.com/','why=PostString2333')
+#
+# # 模拟GET操作
+# print my_spider.send_get('http://www.baidu.com/')
+#
+# # 切换到手机模式
+# my_spider.set_mobile()
+#
+# # 模拟GET操作
+# print my_spider.send_get('http://www.baidu.com/')

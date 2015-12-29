@@ -9,19 +9,16 @@ def getHtml(url):
         html = urllib.urlopen(url)
         scode = html.read()
         return scode
-
-
 def getImage(source):
-        images = re.findall(r'input src=.*?img.picuphost.com/img/upload/image/.*?\.jpeg',source)
+        images = re.findall(r'input src=.*?\.jpg',source)
         x = 0
         pic=[]
         for i in images:
-
                 picurl=i.replace("input src='",'')
                 pic.append(picurl)
-                print(picurl)
+                #print(picurl)
 
-                print(picurl,type(picurl))
+                #print(picurl,type(picurl))
                 # save_path = "c://downloads"
                 # fileName = save_path + "\\{0}.jpg".format(str(x))
                 # imgData = urllib2.urlopen(picurl).read()
@@ -32,7 +29,6 @@ def getImage2(source):
         imgre = re.compile(re2)
         images = re.findall(imgre,source)
         return images
-
 def saveImg(imageURL):
     file=0
     for i in imageURL:
@@ -40,7 +36,6 @@ def saveImg(imageURL):
         urllib.urlretrieve(i)
         print(i)
         file+=1
-
 if __name__=='__main__':
     source=getHtml('http://www.cl529.com/htm_data/16/1512/1775897.html')
     pic=getImage(source)
