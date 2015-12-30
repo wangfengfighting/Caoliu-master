@@ -22,7 +22,7 @@ def begindown():
 
 def downall():
     my_spider = whyspider.WhySpider()
-    for page in range(1,130):
+    for page in range(4,130):
         allLink=getAllPageLink.getPagelink(getAllPageLink.getHtml(page))
         for sinlink in allLink:#sinlink 每个连接下的网页
             #print('begin down ',sinlink)
@@ -45,20 +45,22 @@ def downall():
                     else:
                         os.mkdir(filepath)
                     name=filepath+'\\'+finame
-                    f = open(name,'wb')
-                    data= my_spider.send_get(url)
-                    print('get data')
-                    if not data.strip():
-                        print('NULL'+'剩余'+str(len(picurl)-urlindex))
-                        print('结束空')
-                    else:
-                        print('开始-----')
-                        f.write(data)
-                        f.close()
-                        print('下载了'+str(num)+'剩余'+str(len(picurl)-urlindex))
+                    fitltype=finame.split('.')[-1]
+                    if fitltype=='jpeg' or fitltype=='jpg':
+                        f = open(name,'wb')
+                        data= my_spider.send_get(url)
+                        print('get data')
+                        if not data.strip():
+                            print('NULL'+'剩余'+str(len(picurl)-urlindex))
+                            print('结束空')
+                        else:
+                            print('开始-----')
+                            f.write(data)
+                            f.close()
+                            print('下载了'+str(num)+'剩余'+str(len(picurl)-urlindex))
 
                     num+=1
-                    time.sleep(5)
+                    #time.sleep(5)
                     print('结束这一轮')
 
 

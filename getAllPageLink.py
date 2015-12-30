@@ -9,7 +9,8 @@ from bs4 import BeautifulSoup
 import urllib
 import urllib2
 def getHtml(urlnumber):
-    url= 'http://www.cl529.com/thread0806.php?fid=16&search=&page={0}'.format(str(urlnumber))
+    url= 'http://www.cl547.com/thread0806.php?fid=16&search=&page={0}'.format(str(urlnumber))
+    print url
     html = urllib.urlopen(url)
     scode = html.read()
     return scode
@@ -18,7 +19,7 @@ def getPagelink(source):
         allLink=[]
         for i in images:
             link=i.split('"')[-1]
-            allLink.append('http://www.cl529.com/'+link)
+            allLink.append('http://www.cl547.com/'+link)
         filteralllink=allLink[14:]
         return filteralllink
 if __name__=='__main__':

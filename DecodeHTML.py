@@ -45,7 +45,7 @@ if __name__=='__main__':
     #source=getHtml('http://www.cl529.com/htm_data/16/1512/1775897.html')
     source=getHtml('http://www.cl547.com/htm_data/16/1512/1767606.html')
     pic=getImage(source)
-    #print(pic)
+    print(pic)
     #saveImg(pic)
 
     #input src="http://ipoock.com/img/g4/20151222040151e4u6a.jpeg" type="image"
